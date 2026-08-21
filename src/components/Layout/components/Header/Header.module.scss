@@ -30,6 +30,7 @@
 }
 
 .search {
+  position: relative;
   width: 361px;
   height: var(--search-height);
   background-color: rgba(22, 24, 35, 0.06);
@@ -90,4 +91,10 @@
     height: calc(var(--search-height) - 18px);
     background-color: rgba(22, 24, 35, 0.12);
   }
+}
+
+.search-result-title {
+  color: rgba(22, 24, 35, 0.5);
+  font-size: 1.4rem;
+  padding-left: 12px;
 }
