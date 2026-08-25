@@ -8,6 +8,8 @@ import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import Tooltip from "../../../Propper/Tooltip";
 import AccountItem from "../../../AccountItem";
+import Button from "../../../Button";
+import { CiLogin } from "react-icons/ci";
 
 
 const cx = classNames.bind(styles);
@@ -47,7 +49,10 @@ function Header() {
           </Tooltip>
         </div>
 
-        <div className={cx("action")}>Hello</div>
+        <div className={cx("action")}>
+          <Button text>Upload</Button>
+          <Button primary >Login</Button>
+        </div>
       </div>
     </div >
   );
