@@ -3,14 +3,34 @@ import styles from "./Header.module.scss";
 import { FaTiktok } from "react-icons/fa";
 import { IoIosCloseCircleOutline, IoMdSearch } from "react-icons/io";
 import { useState } from "react";
-import { Tooltip } from 'antd';
-import Popper from "../../../Popper";
+import { Popover } from 'antd';
+import PopperContent from "../../../PopperContent";
+import PopperMenu from "../../../PopperMenu";
 import AccountItem from "../../../AccountItem";
 import Button from "../../../Button";
-import { IoIosLogIn } from "react-icons/io";
-
+import { CiMenuKebab } from "react-icons/ci";
+import { MdLanguage } from "react-icons/md";
+import { FaRegKeyboard } from "react-icons/fa";
+import { RiInformation2Line } from "react-icons/ri";
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+  {
+    icon: <MdLanguage />,
+    title: "English"
+  },
+  {
+    icon: <RiInformation2Line />,
+    title: "Feedback and help",
+    to: "/feedback"
+  },
+  {
+    icon: <FaRegKeyboard />,
+    title: "Keyboard shortcuts"
+  }
+
+]
 
 function Header() {
   const [input, setInput] = useState("");
@@ -24,19 +44,17 @@ function Header() {
           <span className={cx("title")}>Tiktok</span>
         </div>
 
-        <Tooltip
+        <Popover
           open={searchResult.length > 0}
-          classNames={{ root: cx("tooltip") }}
           arrow={false}
-          align={{ offset: [-60, -2] }}
-          title={
-            <Popper width="361px">
+          content={
+            <PopperContent width="361px">
               <h4 className={cx("search-label")}>Account</h4>
               <AccountItem />
               <AccountItem />
               <AccountItem />
               <AccountItem />
-            </Popper>
+            </PopperContent>
           }
         >
           <div className={cx("search")}>
@@ -59,14 +77,20 @@ function Header() {
             </button>
 
           </div>
-        </Tooltip>
+        </Popover>
 
         <div className={cx("action")}>
           <Button text>Upload</Button>
           <Button primary >Login</Button>
+
+          <PopperMenu contents={MENU_ITEMS}>
+            <button className={cx("more-button")}>
+              <CiMenuKebab />
+            </button>
+          </PopperMenu>
         </div>
       </div>
-    </div>
+    </div >
   );
 
 }

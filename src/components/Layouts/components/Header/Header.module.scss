@@ -1,7 +1,5 @@
-.tooltip {
-  :global(.ant-tooltip-container) {
-    background-color: transparent;
-  }
+:global(.ant-popover .ant-popover-container) {
+  padding: 0;
 }
 
 .wrapper {
@@ -106,4 +104,14 @@
 
 .action {
   display: flex;
+  align-items: center;
+}
+
+.more-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-left: 10px;
+  padding: 8px;
 }

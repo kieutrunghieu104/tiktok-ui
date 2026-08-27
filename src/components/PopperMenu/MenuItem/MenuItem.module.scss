@@ -1,0 +1,19 @@
+.wrapper {
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+
+  .item {
+    display: flex;
+    justify-content: start;
+
+  }
+
+  a {
+    color: var(--text-color);
+  }
+}
+
+.wrapper:nth-child(odd) {
+  padding: 4px 0;
+}
