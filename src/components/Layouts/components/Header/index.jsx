@@ -6,7 +6,7 @@ import {
   FaRegUser
 } from "react-icons/fa";
 import { IoIosCloseCircleOutline, IoMdSearch } from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Popover, Tooltip } from 'antd';
 import PopperContent from "../../../PopperContent";
 import PopperMenu from "../../../PopperMenu";
@@ -18,6 +18,7 @@ import { RiInformation2Line, RiCoinsLine } from "react-icons/ri";
 import { TiMessage } from "react-icons/ti";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+import { ImageAvartar } from "../../../Image";
 
 const cx = classNames.bind(styles);
 
@@ -60,11 +61,11 @@ function Header() {
 
   const currentUser = true;
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setSearchResult([]);
-  //   })
-  // }, [searchResult])
+  useEffect(() => {
+    setTimeout(() => {
+      setSearchResult([]);
+    }, 2000)
+  }, []);
 
   const handleMenuChange = (menuItem) => {
     console.log(menuItem);
@@ -165,7 +166,7 @@ function Header() {
           }
           <PopperMenu contents={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <ImageAvartar
                 className={cx("user-avatar")}
                 src="https://marketplace.canva.com/tXH-Q/MAG7IGtXH-Q/1/tl/canva-MAG7IGtXH-Q.jpg"
                 alt="Nguyen Van An" />
