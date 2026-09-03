@@ -40,3 +40,21 @@ a {
   color: var(--text-color);
   text-decoration: none;
 }
+
+// popover
+:global(.ant-popover .ant-popover-container) {
+  padding: 0;
+}
+
+//tooltip
+:global(.ant-tooltip .ant-tooltip-container) {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.2rem;
+  border-radius: 8px;
+  background-color: rgba(84, 84, 84, 0.92);
+}
+
+:global(.ant-tooltip .ant-tooltip-arrow::before) {
+  background-color: rgba(84, 84, 84, 0.92);
+}
