@@ -1,22 +1,28 @@
 import classNames from "classnames/bind";
 import styles from "./AccountItem.module.scss";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { ImageAvartar } from "../Image";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
   return (
-    <div className={cx("wrapper")}>
-      <img src="https://marketplace.canva.com/tXH-Q/MAG7IGtXH-Q/1/tl/canva-MAG7IGtXH-Q.jpg" alt="Hoa" className={cx("avatar")} />
+    <Link to={`/@${data.nickname}`} className={cx("wrapper")} >
+      <ImageAvartar
+        src={data.avatar}
+        alt={data.full_name}
+        className={cx("avatar")}
+      />
 
       <div className={cx("information")}>
         <p className={cx("fullname")}>
-          <span>Nguyen Van An</span>
-          <FaRegCircleCheck className={cx("icon")} />
+          <span>{data.full_name}</span>
+          {data.tick && <FaRegCircleCheck className={cx("icon")} />}
         </p>
-        <span className={cx("username")}>AnNV</span>
+        <span className={cx("username")}>{data.nickname}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 

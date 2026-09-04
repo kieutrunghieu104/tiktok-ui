@@ -5,12 +5,8 @@ import {
   FaRegKeyboard,
   FaRegUser
 } from "react-icons/fa";
-import { IoIosCloseCircleOutline, IoMdSearch } from "react-icons/io";
-import { useState, useEffect } from "react";
-import { Popover, Tooltip } from 'antd';
-import PopperContent from "../../../PopperContent";
+import { Tooltip } from 'antd';
 import PopperMenu from "../../../PopperMenu";
-import AccountItem from "../../../AccountItem";
 import Button from "../../../Button";
 import { CiMenuKebab } from "react-icons/ci";
 import { MdLanguage, MdOutlineCloudUpload } from "react-icons/md";
@@ -19,6 +15,7 @@ import { TiMessage } from "react-icons/ti";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { ImageAvartar } from "../../../Image";
+import Search from "../Search";
 
 const cx = classNames.bind(styles);
 
@@ -56,16 +53,7 @@ const MENU_ITEMS = [
 ]
 
 function Header() {
-  const [input, setInput] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 2000)
-  }, []);
 
   const handleMenuChange = (menuItem) => {
     console.log(menuItem);
@@ -103,40 +91,8 @@ function Header() {
           <span className={cx("title")}>Tiktok</span>
         </div>
 
-        <Popover
-          open={searchResult.length > 0}
-          arrow={false}
-          content={
-            <PopperContent width="361px">
-              <h4 className={cx("search-label")}>Account</h4>
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-            </PopperContent>
-          }
-        >
-          <div className={cx("search")}>
-            <input
-              type="text"
-              placeholder="Search accounts and video"
-              spellCheck={false}
-              onChange={e => setInput(e.target.value)}
-            />
-
-            <button className={cx("clear")}>
-              <IoIosCloseCircleOutline />
-            </button>
-
-            <button className={cx("loading")}>
-            </button>
-
-            <button className={cx("search-button")} style={{ color: input ? "rgba(22, 24, 35, 0.75)" : "" }}>
-              <IoMdSearch />
-            </button>
-
-          </div>
-        </Popover>
+        {/* search */}
+        <Search />
 
         <div className={cx("action")}>
           {currentUser ? (
