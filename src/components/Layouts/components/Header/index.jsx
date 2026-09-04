@@ -16,6 +16,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { ImageAvartar } from "../../../Image";
 import Search from "../Search";
+import { Link } from "react-router-dom";
+import routesConfig from "../../../../config/routes";
 
 const cx = classNames.bind(styles);
 
@@ -28,6 +30,87 @@ const MENU_ITEMS = [
       title: "Language",
       items: [
         {
+          type: "language",
+          code: "en",
+          title: "English",
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
+          type: "language",
+          code: "en",
+          title: "English",
+        }, {
           type: "language",
           code: "en",
           title: "English",
@@ -86,10 +169,10 @@ function Header() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <div className={cx("logo")}>
+        <Link to={routesConfig.home} className={cx("logo")}>
           <FaTiktok />
           <span className={cx("title")}>Tiktok</span>
-        </div>
+        </Link>
 
         {/* search */}
         <Search />

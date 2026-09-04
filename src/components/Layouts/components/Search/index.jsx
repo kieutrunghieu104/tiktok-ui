@@ -26,6 +26,15 @@ function Search() {
     inputRef.current.focus();
   }
 
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+    if (searchValue.startsWith(" ")) {
+      return;
+    }
+
+    setInput(searchValue);
+  }
+
   useEffect(() => {
     if (!debounceInput.trim()) {
       setSearchResult([]);
@@ -64,9 +73,9 @@ function Search() {
           ref={inputRef}
           value={input}
           type="text"
-          placeholder="Search accounts and video"
+          placeholder="Search accounts and videos"
           spellCheck={false}
-          onChange={e => setInput(e.target.value)}
+          onChange={handleChange}
         />
 
         {input && !loading && (

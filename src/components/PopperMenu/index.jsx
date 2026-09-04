@@ -32,7 +32,7 @@ function ProperMenu({ children, contents, onChange = defaultFn }) {
 
   return (
     <Popover
-      trigger="hover"
+      trigger="click"
       mouseEnterDelay={0.1}
       mouseLeaveDelay={0.4}
       arrow={false}
