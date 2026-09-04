@@ -1,12 +1,13 @@
 import classNames from "classnames/bind";
-import styles from "./Search.module.scss";
 import { useState, useEffect, useRef } from "react";
+import styles from "./Search.module.scss";
 import { Popover } from 'antd';
 import { IoIosCloseCircleOutline, IoMdSearch } from "react-icons/io";
 import PopperContent from "../../../PopperContent";
 import AccountItem from "../../../AccountItem";
 import { RiLoader4Line } from "react-icons/ri";
-import { useDebounce } from "../../../../hooks"
+import { useDebounce } from "../../../../hooks";
+import * as searchServices from "../../../../apiServices/searchServices"
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ function Search() {
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const debounceInput = useDebounce(input, 800)
+  const debounceInput = useDebounce(input, 500)
   const inputRef = useRef();
 
   const handleClear = () => {
@@ -31,17 +32,16 @@ function Search() {
       return;
     };
 
-    setLoading(true);
+    const fetchApi = async () => {
+      setLoading(true);
 
-    fetch(`http://localhost:8888/data?full_name:contains=${encodeURIComponent(debounceInput)}&_page=2&_per_page=5 `)
-      .then(res => res.json())
-      .then(res => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+      const result = await searchServices.search(debounceInput, 1, 5);
+      setSearchResult(result);
+      setLoading(false);
+    }
+
+    fetchApi();
+
   }, [debounceInput]);
 
   return (

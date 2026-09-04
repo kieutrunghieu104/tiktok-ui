@@ -2,7 +2,6 @@ import { Navigate, useParams } from "react-router-dom";
 
 function Profile() {
   const { nickname } = useParams();
-  console.log(nickname)
 
   if (!nickname.startsWith("@")) {
     return <Navigate to={`/${nickname}`} replace />
