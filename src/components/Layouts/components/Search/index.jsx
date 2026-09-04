@@ -6,6 +6,7 @@ import { IoIosCloseCircleOutline, IoMdSearch } from "react-icons/io";
 import PopperContent from "../../../PopperContent";
 import AccountItem from "../../../AccountItem";
 import { RiLoader4Line } from "react-icons/ri";
+import { useDebounce } from "../../../../hooks"
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,7 @@ function Search() {
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  const debounceInput = useDebounce(input, 800)
   const inputRef = useRef();
 
   const handleClear = () => {
@@ -24,14 +26,14 @@ function Search() {
   }
 
   useEffect(() => {
-    if (!input.trim()) {
+    if (!debounceInput.trim()) {
       setSearchResult([]);
       return;
     };
 
     setLoading(true);
 
-    fetch(`http://localhost:8888/data?full_name:contains=${encodeURIComponent(input)}&_page=2&_per_page=5 `)
+    fetch(`http://localhost:8888/data?full_name:contains=${encodeURIComponent(debounceInput)}&_page=2&_per_page=5 `)
       .then(res => res.json())
       .then(res => {
         setSearchResult(res.data);
@@ -40,7 +42,7 @@ function Search() {
       .catch(() => {
         setLoading(false);
       });
-  }, [input]);
+  }, [debounceInput]);
 
   return (
     <Popover
